@@ -1,0 +1,208 @@
+.screen-capture-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn var(--transition-normal);
+}
+
+.screen-capture-modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    width: 90vw;
+    max-width: 1200px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.capture-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.capture-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.capture-content {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.capture-instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    flex: 1;
+}
+
+.capture-instructions svg {
+    color: var(--accent-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.capture-instructions h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.capture-instructions p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.capture-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.capture-hint {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.capture-canvas {
+    position: relative;
+    flex: 1;
+    cursor: crosshair;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.capture-canvas img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+}
+
+.selection-box {
+    position: absolute;
+    border: 2px solid var(--accent-primary);
+    background: rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.capture-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    padding-top: var(--spacing-md);
+}
+
+.capture-error {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Monitor selector grid */
+.monitor-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+}
+
+.monitor-selector h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.monitor-selector p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.monitors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 800px;
+}
+
+.monitor-option {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.monitor-option:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+.monitor-option img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.monitor-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 14px;
+}
